@@ -16,7 +16,7 @@
 
 ```xml
 <dependency>
-    <groupId>cn.jasonone</groupId>
+    <groupId>cn.jasonone.state-machine</groupId>
     <artifactId>state-machine-spring-boot3-stater</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -26,12 +26,12 @@
 
 ```xml
 <dependency>
-    <groupId>cn.jasonone</groupId>
+    <groupId>cn.jasonone.state-machine</groupId>
     <artifactId>state-machine-api</artifactId>
     <version>1.0.0</version>
 </dependency>
 <dependency>
-    <groupId>cn.jasonone</groupId>
+    <groupId>cn.jasonone.state-machine</groupId>
     <artifactId>state-machine-core</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -40,6 +40,9 @@
 ### 2. 定义状态和事件
 
 ```java
+import cn.jasonone.sm.support.State;
+import cn.jasonone.sm.support.Event;
+
 // 状态枚举
 public enum ApprovalStatus implements State {
     PENDING,   // 待审批
@@ -69,6 +72,12 @@ public enum ApprovalEvent implements Event {
 ### 3. 配置状态机
 
 ```java
+import cn.jasonone.sm.annotations.StateMachineAdvice;
+import cn.jasonone.sm.annotations.StateMachineGuard;
+import cn.jasonone.sm.annotations.StateMachineAction;
+import cn.jasonone.sm.support.StateMachineEngine;
+import cn.jasonone.sm.domain.StateContext;
+
 @StateMachineAdvice
 public class TestHandler {
 
@@ -88,6 +97,11 @@ public class TestHandler {
 ### 4. 使用状态机
 
 ```java
+import org.springframework.beans.factory.annotation.Autowired;
+import cn.jasonone.sm.support.StateRegistry;
+import cn.jasonone.sm.support.StateMachineEngine;
+import cn.jasonone.sm.domain.Transition;
+
 @Autowired
 private StateRegistry registry;
 
@@ -172,6 +186,18 @@ engine.trigger("test", "businessId", ApprovalEvent.APPROVE);
 ### 完整示例
 
 ```java
+import cn.jasonone.sm.support.State;
+import cn.jasonone.sm.support.Event;
+import cn.jasonone.sm.annotations.StateMachineAdvice;
+import cn.jasonone.sm.annotations.StateMachineGuard;
+import cn.jasonone.sm.annotations.StateMachineAction;
+import cn.jasonone.sm.support.StateMachineEngine;
+import cn.jasonone.sm.domain.StateContext;
+import cn.jasonone.sm.support.StateRegistry;
+import cn.jasonone.sm.domain.Transition;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 // 1. 定义状态和事件
 public enum OrderStatus implements State {
     CREATED,     // 已创建
@@ -276,7 +302,7 @@ public class OrderService {
 
 ```xml
 <dependency>
-    <groupId>cn.jasonone</groupId>
+    <groupId>cn.jasonone.state-machine</groupId>
     <artifactId>state-machine-spring-boot3-stater</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -285,7 +311,7 @@ public class OrderService {
 ### Gradle
 
 ```groovy
-implementation 'cn.jasonone:state-machine-spring-boot3-stater:1.0.0'
+implementation 'cn.jasonone.state-machine:state-machine-spring-boot3-stater:1.0.0'
 ```
 
 ## 贡献
@@ -295,3 +321,5 @@ implementation 'cn.jasonone:state-machine-spring-boot3-stater:1.0.0'
 ## 许可证
 
 本项目采用 MIT 许可证。
+
+详细信息请参阅 [MIT License](https://opensource.org/licenses/MIT)。
