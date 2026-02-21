@@ -1,7 +1,5 @@
 package cn.jasonone.sm.support;
 
-import cn.jasonone.sm.domain.StateContext;
-
 /**
  * 状态机引擎
  */

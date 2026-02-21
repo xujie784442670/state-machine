@@ -12,8 +12,24 @@ import lombok.extern.slf4j.Slf4j;
 public class TestHandler {
 
     @StateMachineGuard
+    public boolean guardTestAll(StateMachineEngine engine, StateContext ctx){
+        log.info("[guardTestAll] 状态机[{}] 守卫[{}]", ctx.machineCode(), ctx.businessId());
+        return true;
+    }
+    @StateMachineGuard(machineCode = "test")
     public boolean guardTest(StateMachineEngine engine, StateContext ctx){
-        log.info("状态机[{}] 守卫[{}]", ctx.machineCode(), ctx.businessId());
+        log.info("[guardTest] 状态机[{}] 守卫[{}]", ctx.machineCode(), ctx.businessId());
+        return true;
+    }
+    @StateMachineGuard(machineCode = "test", sourceState = "PENDING", targetState = "APPROVED")
+    public boolean guardTestApprove(StateMachineEngine engine, StateContext ctx){
+        log.info("[guardTestApprove] 状态机[{}] 守卫[{}]", ctx.machineCode(), ctx.businessId());
+        return true;
+    }
+
+    @StateMachineGuard(machineCode = "test", sourceState = "PENDING", targetState = "REJECT")
+    public boolean guardTestReject(StateMachineEngine engine, StateContext ctx){
+        log.info("[guardTestReject] 状态机[{}] 守卫[{}]", ctx.machineCode(), ctx.businessId());
         return true;
     }
 
