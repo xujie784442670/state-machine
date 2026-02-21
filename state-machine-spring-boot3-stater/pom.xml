@@ -9,7 +9,7 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>state-machine-api</artifactId>
+    <artifactId>state-machine-spring-boot3-stater</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,18 +19,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-core</artifactId>
+            <groupId>cn.jasonone.state-machine</groupId>
+            <artifactId>state-machine-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <scope>provided</scope>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+            <scope> test</scope>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>annotationProcessor</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope> test</scope>
         </dependency>
     </dependencies>
 

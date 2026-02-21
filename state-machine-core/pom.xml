@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.jasonone</groupId>
-        <artifactId>state-machine-spring-boot3-stater</artifactId>
+        <groupId>cn.jasonone.state-machine</groupId>
+        <artifactId>state-machine-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
@@ -19,7 +19,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.jasonone</groupId>
+            <groupId>cn.jasonone.state-machine</groupId>
             <artifactId>state-machine-api</artifactId>
         </dependency>
         <dependency>
@@ -39,6 +39,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
